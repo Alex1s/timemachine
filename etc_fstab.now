@@ -1,0 +1,2 @@
+PARTUUID=50d1b100-01 / ext4 defaults 0 1
+UUID=39A96AE23CD1F112 /mnt/39A96AE23CD1F112 ntfs defaults,nofail,x-systemd.device-timeout=60s,X-mount.mkdir 0 0
