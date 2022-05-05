@@ -6,16 +6,19 @@ services:
       - TM_GROUPNAME=alexis
       - PASSWORD=${PASS}
       - SHARE_NAME=Alexis Time Machine
-      - DEBUG_LEVEL=3
     restart: unless-stopped
     ports:
       - 445:445
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - /mnt/${UUID}:/opt/alexis:rw
+      - /run/media/${UUID}:/opt/alexis:rw
     container_name: timemachine
     image: mbentley/timemachine:smb
+    tmpfs:
+      - /var/lib/samba
+      - /var/cache/samba
+      - /run/samba
     ulimits:
       nofile:
         hard: 65535 # 2^16-1, max uint16_t value
