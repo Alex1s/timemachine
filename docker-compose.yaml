@@ -14,7 +14,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /run/media/${UUID}:/opt/alexis:rw
     container_name: timemachine
-    image: mbentley/timemachine:smb
+    image: mbentley/timemachine:smb@sha256:c6b93bee0cafa42bdabbc6e32cc06c1c620698fdabe826c3a0813c7c0b51f8d0  # does not really support tags
     tmpfs:
       - /var/lib/samba
       - /var/cache/samba
