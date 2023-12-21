@@ -6,5 +6,10 @@ services:
     ports:
       - "445:445"
     volumes:
-      - /mnt/timemachine/backup:/opt:rw
+      - usb_hdd:/opt
     image: mbentley/timemachine:smb-20231220  # https://github.com/mbentley/docker-timemachine/commit/a3b67f45e28d54b8c73d150261b05f07d3cffd63
+volumes:
+  usb_hdd:
+    driver_opts:
+      type: "ext4"
+      device: "/dev/disk/by-uuid/4e621c36-88be-42d0-9325-a547b6798e14"
