@@ -1,25 +1,10 @@
-version: "3.7"
 services:
-  timemachine:
+  service:
     environment:
-      - TM_USERNAME=alexis
-      - TM_GROUPNAME=alexis
-      - PASSWORD=${PASS}
-      - SHARE_NAME=Alexis Time Machine
+      - IGNORE_DOS_ATTRIBUTES=true
     restart: unless-stopped
     ports:
-      - 445:445
+      - "445:445"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - /run/media/${UUID}:/opt/alexis:rw
-    container_name: timemachine
-    image: mbentley/timemachine:smb@sha256:c6b93bee0cafa42bdabbc6e32cc06c1c620698fdabe826c3a0813c7c0b51f8d0  # does not really support tags
-    tmpfs:
-      - /var/lib/samba
-      - /var/cache/samba
-      - /run/samba
-    ulimits:
-      nofile:
-        hard: 65535 # 2^16-1, max uint16_t value
-        soft: 65535 # 2^16-1, max uint16_t value
+      - /mnt/timemachine/backup:/opt:rw
+    image: mbentley/timemachine:smb-20231220  # https://github.com/mbentley/docker-timemachine/commit/a3b67f45e28d54b8c73d150261b05f07d3cffd63

@@ -1,9 +1,0 @@
-UUID=6393F356310B86A0 /mnt/6393F356310B86A0 ntfs defaults,nofail,x-systemd.device-timeout=60s,X-mount.mkdir 0 0
-# UUID is the id of the storage device 
-# /mnt/6393F356310B86A0 is the folder the storage device will be mounted to
-# ntfs is the file system the storage device is using
-# default: the defaults, dont know the details
-# nofail: dont prevent the os from booting if storage is not plugged in
-# x-systemd.device-timeout=10s try to mount device for this long and then give up and continue booting
-# X-mount.mkdir create the /mnt/6393F356310B86A0 folder if it does not exist yet
-# the two zeros at the end: dont know exactly

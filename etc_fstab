@@ -1,0 +1,11 @@
+UUID=6393F356310B86A0 /mnt/6393F356310B86A0 ntfs defaults,nofail,x-systemd.device-timeout=60s,X-mount.mkdir 0 0
+/dev/sda /mnt/timemachine ext4 defaults,nofail,x-systemd.device-timeout=60s,X-mount.mkdir 0 2
+# /dev/sda is the storage device, on my Raspberry PI is only one stoage device of sd* type connected, so it will always be /dev/sda
+# /mnt/timemachine is the folder the storage device will be mounted to
+# ext4 is the file system the storage device is using
+# default: the defaults, dont know the details
+# nofail: dont prevent the os from booting if storage is not plugged in
+# x-systemd.device-timeout=10s try to mount device for this long and then give up and continue booting
+# X-mount.mkdir create the /mnt/6393F356310B86A0 folder if it does not exist yet
+# the zero: is checked by the dump(8) utility. This field is usually set to 0, which disables the check. (source: https://wiki.archlinux.org/title/Fstab)
+# the two: sets the order for file system checks at boot time; see fsck(8). For the root device it should be 1. For other partitions it should be 2, or 0 to disable checking. (source: https://wiki.archlinux.org/title/Fstab)
