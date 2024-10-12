@@ -3,7 +3,10 @@ services:
     environment:
       - IGNORE_DOS_ATTRIBUTES=true
       - VOLUME_SIZE_LIMIT=1.7T
-    restart: unless-stopped
+    # https://github.com/containers/podman/issues/20418
+    # https://github.com/containers/podman/pull/20962
+    # restart: unless-stopped
+    restart: always
     ports:
       - "445:445"
     volumes:
