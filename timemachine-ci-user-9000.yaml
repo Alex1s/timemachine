@@ -6,8 +6,9 @@ ssh_authorized_keys:
 locale: de_DE.UTF-8
 timezone: Europe/Berlin
 runcmd:
-  - setenforce Permissive
-  - sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+  - set -e
+  - setenforce Permissive && getenforce
+  - sed -i 's/^SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
   - DEFAULT_USERNAME=$(basename /home/*)
   - mkdir /home/"$DEFAULT_USERNAME"/.bashrc.d
   - echo "alias podman='sudo podman'" >> /home/"$DEFAULT_USERNAME"/.bashrc.d/aliases
