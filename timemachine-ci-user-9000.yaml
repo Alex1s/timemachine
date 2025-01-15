@@ -14,9 +14,8 @@ runcmd:
   - echo "alias podman='sudo podman'" >> /home/"$DEFAULT_USERNAME"/.bashrc.d/aliases
   - echo "alias pc='sudo podman compose'" >> /home/"$DEFAULT_USERNAME"/.bashrc.d/aliases
   - chown -R 1000:1000 /home/"$DEFAULT_USERNAME"/.bashrc.d
-  - systemctl enable podman.socket
-  - systemctl start podman.socket
-  - systemctl enable podman-restart
+  - systemctl enable podman.socket --now
+  - systemctl enable podman-restart --now
   - systemctl start podman-restart
   - "COMPOSE_PATH=/usr/bin/docker-compose && curl --location 'https://github.com/docker/compose/releases/download/v2.32.1/docker-compose-linux-x86_64' --output $COMPOSE_PATH && chmod 755 $COMPOSE_PATH"
   - dnf install -y https://zfsonlinux.org/epel/zfs-release-2-3$(rpm --eval "%{dist}").noarch.rpm
@@ -24,12 +23,12 @@ runcmd:
   - dnf config-manager --enable zfs-kmod
   - dnf install -y zfs
   - /sbin/modprobe zfs
-  - zpool import Toshiba-20200821002664F
+  - zpool import TimeMachine
+  - systemctl enable zfs-scrub-weekly@TimeMachine.timer
   - cd /home/"$DEFAULT_USERNAME"
   - git clone 'https://github.com/Alex1s/timemachine.git'
   - chown -R 1000:1000 timemachine
   - cd timemachine && podman compose up -d && cd -
-  - reboot now
 package_reboot_if_required: true
 package_update: true
 package_upgrade: true

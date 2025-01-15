@@ -10,5 +10,5 @@ services:
     ports:
       - "445:445"
     volumes:
-      - /Toshiba-20200821002664F:/opt
+      - /TimeMachine/timemachine_new:/opt
     image: mbentley/timemachine:smb-20240821  # https://github.com/mbentley/docker-timemachine/commit/e58fe89f645fe19d7aa96cff0bf2e77398bc95e5
