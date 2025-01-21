@@ -24,7 +24,7 @@ runcmd:
   - dnf install -y zfs
   - /sbin/modprobe zfs
   - zpool import TimeMachine
-  - systemctl enable zfs-scrub-weekly@TimeMachine.timer
+  - systemctl enable zfs-scrub-weekly@TimeMachine.timer --now
   - cd /home/"$DEFAULT_USERNAME"
   - git clone 'https://github.com/Alex1s/timemachine.git'
   - chown -R 1000:1000 timemachine
