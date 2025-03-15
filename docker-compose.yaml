@@ -10,7 +10,7 @@ services:
     ports:
       - "445:445"
     volumes:
-      - /TimeMachine/timemachine:/opt
+      - /TimeMachine/MacBookAir/timemachine:/opt
     image: mbentley/timemachine:smb-20240821  # https://github.com/mbentley/docker-timemachine/commit/e58fe89f645fe19d7aa96cff0bf2e77398bc95e5
   samba:
     image: ghcr.io/servercontainers/samba:smbd-only-a3.21.2-s4.20.6-r1
@@ -25,7 +25,7 @@ services:
     ports:
       - "446:445"
     volumes:
-      - /TimeMachine/timemachine_old:/shares/timemachine_old
+      - /TimeMachine/timemachine:/shares/timemachine_old
       - /TimeMachine/media:/shares/media
     # https://github.com/containers/podman/issues/20418
     # https://github.com/containers/podman/pull/20962
