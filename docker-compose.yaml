@@ -17,7 +17,6 @@ services:
     environment:
       ACCOUNT_user: "user:1000:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:A6932FF339E3E295D2E807CB0F03D52B:[U          ]:LCT-678823B4:"
       SAMBA_VOLUME_CONFIG_timemachine: "[TimeMachineOld]; path=/shares/timemachine_old; valid users = user; guest ok = no; read only = yes; browseable = yes"
-      SAMBA_VOLUME_CONFIG_media: "[Media]; path=/shares/media; valid user = user; guest ok = no; read only = yes; browseable = yes"
       FAIL_FAST: 1
       WSDD2_DISABLE: 1
       AVAHI_DISABLE: 1
@@ -26,7 +25,6 @@ services:
       - "446:445"
     volumes:
       - /TimeMachine/timemachine:/shares/timemachine_old
-      - /TimeMachine/media:/shares/media
     # https://github.com/containers/podman/issues/20418
     # https://github.com/containers/podman/pull/20962
     # restart: unless-stopped
